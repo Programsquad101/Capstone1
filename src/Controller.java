@@ -34,6 +34,7 @@ import javafx.scene.image.ImageView;
 public class Controller {
 
 	int[] validNumbers = new int[4];
+	int Testpush = 1;
 
     @FXML
     private Button btnVerify;
