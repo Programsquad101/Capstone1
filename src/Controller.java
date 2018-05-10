@@ -1,13 +1,14 @@
 /*
 * GROUP MEMEBERS: Theelipan Prabakar, James Carr, Usman
 * ----------------------------------------------------------------------------------------------
-* 8 + 8 works, 8 +8 works, but 8+ 8 does not. (+ can be replaced by -/*()) 
-* Need to give the cards value numbers, so can check if the user is using the card values and not random numbers to add to 24 
-*Need a way to find the correct solution to the problem and print it out to the user, Add a button that says show answer or something like that
+* Need to give the cards value numbers, so can check IF the user is using the card values and not random numbers to add to 24 
 * Make sure the user uses each card once and only once. 
+*Need a way to find the correct solution to the problem and print it out to the user, Add a button that says show answer or something like that
 *-----------------------------------------------------------------------------------------------
 */
 
+import java.util.*;
+import java.util.Arrays;
 import java.util.Stack;
 
 import javafx.event.ActionEvent;
@@ -67,6 +68,11 @@ public class Controller {
 	void textField(ActionEvent event) {
 
 	}
+	/**
+	 * @param no para
+	 * @return void 
+	 * 
+	 */
 
 	public void cards() {
 
@@ -128,18 +134,17 @@ public class Controller {
 		Stack<Character> ops = new Stack<Character>();
 
 		for (int i = 0; i < chars.length; i++) {
-			if (chars[i] == ' ') {
-				continue;
-			}
-			// Do the stack for numbers, if its 0 - 9, means its a number
-			if (chars[i] >= '0' && chars[i] <= '9') {
-				StringBuffer sbuf = new StringBuffer();
 
+			// Do the stack for numbers, if its 0 - 9, means its a number
+			if (chars[i] >= '1' && chars[i] <= '9') {
+				StringBuffer sbuf = new StringBuffer();
+				
 				// If there is more than one digit in a number, check, then push if so
 				while (i < chars.length && chars[i] >= '0' && chars[i] <= '9') {
 					sbuf.append(chars[i++]);
 					nums.push(Integer.parseInt(sbuf.toString()));
 				}
+	
 			}
 			// open brace, pushed to operator stack
 			else if (chars[i] == '(')

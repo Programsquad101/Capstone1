@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"<Unnamed>","c":"Controller","l":"cards()"},{"p":"<Unnamed>","c":"Controller","l":"Controller()"},{"p":"<Unnamed>","c":"Controller","l":"operatorCases(char, int, int)"},{"p":"<Unnamed>","c":"Controller","l":"precedenceOrder(char, char)"},{"p":"<Unnamed>","c":"Controller","l":"verifyCards()"}]
