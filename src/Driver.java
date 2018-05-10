@@ -8,7 +8,7 @@ public class Driver extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Parent pnt=FXMLLoader.load(getClass().getResource("MyFXML.fxml")); 
+		Parent pnt=FXMLLoader.load(getClass().getResource("MyModel.fxml")); 
 		Scene sn=new Scene(pnt);
 		primaryStage.setScene(sn);
 		primaryStage.show();
