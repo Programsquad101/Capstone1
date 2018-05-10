@@ -1,16 +1,5 @@
-/*
-* GROUP MEMEBERS: Theelipan Prabakar, James Carr, Usman
-* ----------------------------------------------------------------------------------------------
-* Need to give the cards value numbers, so can check IF the user is using the card values and not random numbers to add to 24 
-* Make sure the user uses each card once and only once. 
-*Need a way to find the correct solution to the problem and print it out to the user, Add a button that says show answer or something like that
-*-----------------------------------------------------------------------------------------------
-*/
 
-import java.util.*;
-import java.util.Arrays;
 import java.util.Stack;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -228,4 +217,4 @@ public class Controller {
 		return 0;
 	}
 
-} // end brace
+} // end br
