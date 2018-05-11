@@ -1,5 +1,7 @@
 
 import java.util.Stack;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -34,18 +36,23 @@ public class Controller {
 
 	@FXML
 	private ImageView imgCard4;
-	
 
-    @FXML
-    void refresh(ActionEvent event) {
+	@FXML
+	void refresh(ActionEvent event) {
 		cards();
 		myTextField.clear();
-    }
-    
+	}
+
+	/**
+	 * @param none
+	 * @return void
+	 * 
+	 */
 	@FXML
 	void startGame(ActionEvent event) {
 		cards();
 		BtnStartGame.setVisible(false);
+		verifyCards();
 	}
 
 	@FXML
@@ -57,9 +64,10 @@ public class Controller {
 	void textField(ActionEvent event) {
 
 	}
+
 	/**
-	 * @param no para
-	 * @return void 
+	 * @param none
+	 * @return void
 	 * 
 	 */
 
@@ -69,13 +77,17 @@ public class Controller {
 
 		// choose 4 random distinct cards from the deck
 		int count = 0;
+		int card1 = 0;
+		int card2 = 0;
+		int card3 = 0;
+		int card4 = 0;
 
 		while (count < 4) {// Display only four cards
 
-			int card1 = (int) (Math.random() * 12) + 1;// Ignore zero
-			int card2 = (int) (Math.random() * 12) + 1;// Ignore zero
-			int card3 = (int) (Math.random() * 12) + 1;// Ignore zero
-			int card4 = (int) (Math.random() * 12) + 1;// Ignore zero
+			card1 = ((int) (Math.random() * 12) + 1) + 1;// Ignore zero
+			card2 = ((int) (Math.random() * 12) + 1) + 1;// Ignore zero
+			card3 = ((int) (Math.random() * 12) + 1) + 1;// Ignore zero
+			card4 = ((int) (Math.random() * 12) + 1) + 1;// Ignore zero
 
 			if ((randomCards[card1] = !randomCards[card2]) && (randomCards[card1] = !randomCards[card3])
 					&& (randomCards[card1] = !randomCards[card4]) && (randomCards[card2] = !randomCards[card3])
@@ -88,26 +100,27 @@ public class Controller {
 				String name3 = cards[(int) (Math.random() * cards.length)];
 				String name4 = cards[(int) (Math.random() * cards.length)];
 
-				randomCards[card1] = true;
-
-				Image image1 = new Image("png/" + (card1 + 1) + "_of_" + name1 + ".png");
-				Image image2 = new Image("png/" + (card2 + 1) + "_of_" + name2 + ".png");
-				Image image3 = new Image("png/" + (card3 + 1) + "_of_" + name3 + ".png");
-				Image image4 = new Image("png/" + (card4 + 1) + "_of_" + name4 + ".png");
+				Image image1 = new Image("png/" + (card1) + "_of_" + name1 + ".png");
+				Image image2 = new Image("png/" + (card2) + "_of_" + name2 + ".png");
+				Image image3 = new Image("png/" + (card3) + "_of_" + name3 + ".png");
+				Image image4 = new Image("png/" + (card4) + "_of_" + name4 + ".png");
 
 				imgCard1.setImage(image1);
 				imgCard2.setImage(image2);
 				imgCard3.setImage(image3);
 				imgCard4.setImage(image4);
 
-				int value = card1 % 13;
-
-				validNumbers[count] = (value == 0) ? 13 : value;
 				count++;
 
 			}
 
 		}
+
+		String cardOneValue = Integer.toString(card1);
+		String cardTwoValue = Integer.toString(card2);
+		String cardThreeValue = Integer.toString(card3);
+		String cardFourValue = Integer.toString(card4);
+		System.out.println(cardOneValue + " - " + cardTwoValue + " - " + cardThreeValue + " - " + cardFourValue);
 
 	}
 
@@ -115,6 +128,17 @@ public class Controller {
 
 		String text = myTextField.getText();
 		char[] chars = text.toCharArray();
+		
+		myTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, 
+                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                	myTextField.setText(newValue.replaceAll("[^\\d\\h+-/*]", ""));
+                }
+            }
+        });
+        
 
 		// Set up Stack for numbers
 		Stack<Integer> nums = new Stack<Integer>();
@@ -127,13 +151,13 @@ public class Controller {
 			// Do the stack for numbers, if its 0 - 9, means its a number
 			if (chars[i] >= '1' && chars[i] <= '9') {
 				StringBuffer sbuf = new StringBuffer();
-				
+
 				// If there is more than one digit in a number, check, then push if so
 				while (i < chars.length && chars[i] >= '0' && chars[i] <= '9') {
 					sbuf.append(chars[i++]);
 					nums.push(Integer.parseInt(sbuf.toString()));
 				}
-	
+
 			}
 			// open brace, pushed to operator stack
 			else if (chars[i] == '(')
@@ -148,8 +172,8 @@ public class Controller {
 			}
 
 			/*
-			 * ------------------------------------------------------------------------
-			 *  The char is a operator +, -, /, * , so push it to operator stack While top of
+			 * ------------------------------------------------------------------------ The
+			 * char is a operator +, -, /, * , so push it to operator stack While top of
 			 * 'ops' has same or greater precedence to current token, which is an operator.
 			 * Apply operator on top of 'ops' to top two elements in nums stack
 			 * ------------------------------------------------------------------------
@@ -171,9 +195,9 @@ public class Controller {
 		// Check to see if the number is equal to 24
 		int result = nums.pop();
 		if (result != 24) {
-			System.out.println("wrong " + result + " is NOT equal to 24");
+			System.out.println("Wrong - " + result + " is NOT equal to 24");
 		} else
-			System.out.println("Correct " + result + " is equal to 24");
+			System.out.println("Correct - " + result + " is equal to 24");
 	}
 
 	/*
