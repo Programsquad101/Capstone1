@@ -134,9 +134,25 @@ public class Controller {
 		String text = myTextField.getText();
 		String settext = setText.getText();
 		
+		Stack<Integer> cardNums = new Stack<Integer>();
+		char[] cardChars = settext.toCharArray();
 		
-		System.out.println(settext);
+		
+		for (int i = 0; i < cardChars.length; i++) {
+			if (cardChars[i] >= '1' && cardChars[i] <= '9') {
+				StringBuffer sbuf = new StringBuffer();
+				
+				// If there is more than one digit in a number, check, then push if so
+				while (i < cardChars.length && cardChars[i] >= '0' && cardChars[i] <= '9') {
+					sbuf.append(cardChars[i++]);
+					cardNums.push(Integer.parseInt(sbuf.toString()));
+				}
+				System.out.println(cardNums.peek()); 
+				}
+			}
+			
 		char[] chars = text.toCharArray();
+		
 		
 		myTextField.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -168,6 +184,7 @@ public class Controller {
 				}
 
 			}
+			
 			// open brace, pushed to operator stack
 			else if (chars[i] == '(')
 				ops.push(chars[i]);
@@ -193,6 +210,12 @@ public class Controller {
 					nums.push(operatorCases(ops.pop(), nums.pop(), nums.pop()));
 				ops.push(chars[i]);
 			}
+			
+		}
+		if(cardNums.peek() == nums.peek()) {
+			System.out.println("TEST GOOD"); 
+		}else {
+			System.out.println("NOPE");
 		}
 
 		// Entire expression has been parsed at this point, apply remaining
