@@ -11,6 +11,8 @@ import javafx.scene.image.ImageView;
 
 public class Controller {
 
+	private static final int card1 = 0;
+
 	int[] validNumbers = new int[4];
 
 	@FXML
@@ -24,6 +26,9 @@ public class Controller {
 
 	@FXML
 	private TextField myTextField;
+	
+	@FXML
+	private TextField setText;
 
 	@FXML
 	private ImageView imgCard1;
@@ -121,12 +126,16 @@ public class Controller {
 		String cardThreeValue = Integer.toString(card3);
 		String cardFourValue = Integer.toString(card4);
 		System.out.println(cardOneValue + " - " + cardTwoValue + " - " + cardThreeValue + " - " + cardFourValue);
+		setText.setText(cardOneValue +" "+ cardTwoValue +" "+ cardThreeValue +" "+ cardFourValue);
 
 	}
 
 	public void verifyCards() {
-
 		String text = myTextField.getText();
+		String settext = setText.getText();
+		
+		
+		System.out.println(settext);
 		char[] chars = text.toCharArray();
 		
 		myTextField.textProperty().addListener(new ChangeListener<String>() {
@@ -151,7 +160,7 @@ public class Controller {
 			// Do the stack for numbers, if its 0 - 9, means its a number
 			if (chars[i] >= '1' && chars[i] <= '9') {
 				StringBuffer sbuf = new StringBuffer();
-
+				
 				// If there is more than one digit in a number, check, then push if so
 				while (i < chars.length && chars[i] >= '0' && chars[i] <= '9') {
 					sbuf.append(chars[i++]);
@@ -195,9 +204,9 @@ public class Controller {
 		// Check to see if the number is equal to 24
 		int result = nums.pop();
 		if (result != 24) {
-			System.out.println("Wrong - " + result + " is NOT equal to 24");
+			System.out.println("Wrong : " + result + " is NOT equal to 24");
 		} else
-			System.out.println("Correct - " + result + " is equal to 24");
+			System.out.println("Correct : " + result + " is equal to 24");
 	}
 
 	/*

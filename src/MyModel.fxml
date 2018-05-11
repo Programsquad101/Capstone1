@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="517.0" prefWidth="281.0" style="-fx-background-color: ECE9E7;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<AnchorPane prefHeight="517.0" prefWidth="281.0" style="-fx-background-color: ECE9E7;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
       <BorderPane layoutX="-7.0" prefHeight="525.0" prefWidth="817.0">
          <bottom>
@@ -69,6 +69,7 @@
                         <Font name="System Bold" size="19.0" />
                      </font>
                   </Button>
+                  <TextField fx:id="setText" prefHeight="27.0" prefWidth="127.0" />
                </children>
                <BorderPane.margin>
                   <Insets top="10.0" />
@@ -98,7 +99,7 @@
             </HBox>
          </center>
       </BorderPane>
-      <Button fx:id="BtnStartGame" mnemonicParsing="false" onAction="#startGame" prefHeight="534.0" prefWidth="811.0" style="-fx-background-color: F6F5F4;" text="Start Game">
+      <Button fx:id="BtnStartGame" layoutX="-4.0" layoutY="-202.0" mnemonicParsing="false" onAction="#startGame" prefHeight="746.0" prefWidth="817.0" style="-fx-background-color: F6F5F4;" text="Start Game">
          <font>
             <Font name="System Bold Italic" size="96.0" />
          </font>
