@@ -1,4 +1,3 @@
-
 import java.util.Stack;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -46,6 +45,8 @@ public class Controller {
 	void refresh(ActionEvent event) {
 		cards();
 		myTextField.clear();
+		btnRefresh.setText("Refresh");
+		
 	}
 
 	/**

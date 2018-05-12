@@ -2,11 +2,13 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -16,7 +18,7 @@
          <bottom>
             <HBox prefHeight="93.0" prefWidth="817.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter an expression:" wrappingWidth="267.29376220703125">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #1a6600#1a6600;" text="Enter an expression:" wrappingWidth="267.29376220703125">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -24,7 +26,7 @@
                         <Insets left="50.0" top="25.0" />
                      </HBox.margin>
                   </Text>
-                  <TextField fx:id="myTextField" onAction="#textField" prefHeight="29.0" prefWidth="267.0">
+                  <TextField fx:id="myTextField" onAction="#textField" prefHeight="29.0" prefWidth="267.0" style="-fx-background-color: #1a6600#1a6600; -fx-border-color: white;">
                      <HBox.margin>
                         <Insets top="28.0" />
                      </HBox.margin>
@@ -32,7 +34,7 @@
                         <Font size="20.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="btnVerify" mnemonicParsing="false" onAction="#verify" prefHeight="45.0" prefWidth="117.0" text="Verify">
+                  <Button fx:id="btnVerify" mnemonicParsing="false" onAction="#verify" prefHeight="45.0" prefWidth="117.0" style="-fx-background-color: #1a6600#1a6600; -fx-border-color: black; -fx-text-fill: white;" text="Verify">
                      <HBox.margin>
                         <Insets left="10.0" top="27.0" />
                      </HBox.margin>
@@ -46,7 +48,7 @@
          <top>
             <HBox prefHeight="73.0" prefWidth="801.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Find the Solution:" translateX="20.0" translateY="5.0" wrappingWidth="218.4938507080078">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #1a6600#1a6600;" text="Find the Solution:" translateX="20.0" translateY="5.0" wrappingWidth="218.4938507080078">
                      <font>
                         <Font size="28.0" />
                      </font>
@@ -54,14 +56,14 @@
                         <Insets left="50.0" top="15.0" />
                      </HBox.margin>
                   </Text>
-                  <TextField prefHeight="44.0" prefWidth="262.0" translateX="30.0" translateY="10.0">
+                  <TextField prefHeight="60.0" prefWidth="233.0" style="-fx-background-color: #1a6600#1a6600; -fx-border-color: black; -fx-font: white;" translateX="30.0" translateY="10.0">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
                      <font>
                         <Font size="20.0" />
                      </font></TextField>
-                  <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#refresh" prefHeight="45.0" prefWidth="117.0" text="Refresh">
+                  <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#refresh" prefHeight="60.0" prefWidth="145.0" style="-fx-background-color: #1a6600#1a6600; -fx-border-color: black; -fx-text-fill: white;" text="Start Game">
                      <HBox.margin>
                         <Insets left="45.0" top="15.0" />
                      </HBox.margin>
@@ -69,7 +71,12 @@
                         <Font name="System Bold" size="19.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="setText" prefHeight="27.0" prefWidth="127.0" />
+                  <VBox prefHeight="81.0" prefWidth="120.0" style="-fx-padding: 5px;">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="122.0" text="Allowed Numbers" />
+                        <TextField fx:id="setText" prefHeight="55.0" prefWidth="108.0" style="-fx-background-color: #1a6600#1a6600; -fx-border-color: black; -fx-font: white;" />
+                     </children>
+                  </VBox>
                </children>
                <BorderPane.margin>
                   <Insets top="10.0" />
@@ -99,7 +106,7 @@
             </HBox>
          </center>
       </BorderPane>
-      <Button fx:id="BtnStartGame" layoutX="-4.0" layoutY="-202.0" mnemonicParsing="false" onAction="#startGame" prefHeight="746.0" prefWidth="817.0" style="-fx-background-color: F6F5F4;" text="Start Game">
+      <Button fx:id="BtnStartGame" layoutX="-4.0" layoutY="-202.0" mnemonicParsing="false" onAction="#startGame" prefHeight="746.0" prefWidth="817.0" style="-fx-background-color: F6F5F4;" stylesheets="@Capstone.css" text="Start Game" textFill="#458f21" visible="false">
          <font>
             <Font name="System Bold Italic" size="96.0" />
          </font>
