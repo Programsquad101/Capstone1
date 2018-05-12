@@ -135,6 +135,8 @@ public class Controller {
 		String settext = setText.getText();
 		
 		Stack<Integer> cardNums = new Stack<Integer>();
+		Stack<Integer>tmpCard = new Stack<Integer>(); 
+		
 		char[] cardChars = settext.toCharArray();
 		
 		
@@ -147,7 +149,9 @@ public class Controller {
 					sbuf.append(cardChars[i++]);
 					cardNums.push(Integer.parseInt(sbuf.toString()));
 				}
+				tmpCard.addAll(cardNums);
 				System.out.println(cardNums.peek()); 
+				System.out.println(tmpCard.peek()); 
 				}
 			}
 			
@@ -167,6 +171,8 @@ public class Controller {
 
 		// Set up Stack for numbers
 		Stack<Integer> nums = new Stack<Integer>();
+		Stack<Integer>tmpNums = new Stack<Integer>(); 
+
 
 		// Set up Stack for Operators
 		Stack<Character> ops = new Stack<Character>();
@@ -182,7 +188,9 @@ public class Controller {
 					sbuf.append(chars[i++]);
 					nums.push(Integer.parseInt(sbuf.toString()));
 				}
-
+				tmpNums.addAll(nums);
+				System.out.println(nums.peek());
+				System.out.println(tmpNums.peek());
 			}
 			
 			// open brace, pushed to operator stack
@@ -212,10 +220,16 @@ public class Controller {
 			}
 			
 		}
-		if(cardNums.peek() == nums.peek()) {
+	   
+		if(tmpNums.peek() == tmpCard.peek()) {
 			System.out.println("TEST GOOD"); 
+			System.out.println("TMP NUMS" + tmpNums.peek()); 
+			System.out.println("TMP cards" + tmpCard.peek()); 
+
 		}else {
 			System.out.println("NOPE");
+			System.out.println("TMP NUMS" + tmpNums.peek()); 
+			System.out.println("TMP cards" + tmpCard.peek()); 
 		}
 
 		// Entire expression has been parsed at this point, apply remaining
