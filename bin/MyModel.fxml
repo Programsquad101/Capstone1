@@ -8,13 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="517.0" prefWidth="281.0" style="-fx-background-color: ECE9E7;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
-      <BorderPane layoutX="-7.0" prefHeight="525.0" prefWidth="817.0">
+      <BorderPane layoutX="-1.0" layoutY="-2.0" prefHeight="544.0" prefWidth="811.0">
          <bottom>
             <HBox prefHeight="93.0" prefWidth="817.0" BorderPane.alignment="CENTER">
                <children>
@@ -62,7 +63,8 @@
                      </HBox.margin>
                      <font>
                         <Font size="20.0" />
-                     </font></TextField>
+                     </font>
+                  </TextField>
                   <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#refresh" prefHeight="60.0" prefWidth="145.0" style="-fx-background-color: #1a6600#1a6600; -fx-border-color: black; -fx-text-fill: white;" text="Start Game">
                      <HBox.margin>
                         <Insets left="45.0" top="15.0" />
@@ -106,10 +108,15 @@
             </HBox>
          </center>
       </BorderPane>
-      <Button fx:id="BtnStartGame" layoutX="-4.0" layoutY="-202.0" mnemonicParsing="false" onAction="#startGame" prefHeight="746.0" prefWidth="817.0" style="-fx-background-color: F6F5F4;" stylesheets="@Capstone.css" text="Start Game" textFill="#458f21" visible="false">
-         <font>
-            <Font name="System Bold Italic" size="96.0" />
-         </font>
-      </Button>
+      <Pane fx:id="paneTest" layoutX="-2.0" layoutY="109.0" prefHeight="306.0" prefWidth="814.0" style="-fx-background-color: #40ff00 #40ff00;">
+         <children>
+            <TextField fx:id="tutTxtFld" layoutX="294.0" layoutY="27.0" text="How to Play Card 24" />
+            <TextField layoutX="13.0" layoutY="71.0" prefHeight="43.0" prefWidth="801.0" text="The cards are represented by a) their numbers (2-10), b) Ace is one, c) Jack is 11, d) Queen is 12 and e) King is 13." />
+            <TextField layoutX="16.0" layoutY="132.0" prefHeight="35.0" prefWidth="797.0" text="Enter an expression that uses the four numbers from the four selected cards. Each number must beused once and only once.  " />
+            <TextField layoutX="10.0" layoutY="181.0" prefHeight="27.0" prefWidth="793.0" text="You can use the four arithmetic operators (addition, subtraction,multiplication, and division) and parentheses in the expression." />
+            <TextField layoutX="14.0" layoutY="221.0" prefHeight="43.0" prefWidth="791.0" text=" The expression must evaluate to 24. Click the verify button to validate whether the numbers in the expression " />
+            <TextField layoutX="12.0" layoutY="275.0" prefHeight="27.0" prefWidth="785.0" text="See if whether the result of the expression is correct." />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
