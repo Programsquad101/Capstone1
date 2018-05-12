@@ -27,9 +27,15 @@ public class Controller {
 
 	@FXML
 	private Button BtnStartGame;
+	
+	@FXML 
+	private Button BtnSolution; 
 
 	@FXML
 	private TextField myTextField;
+	
+	@FXML
+	private TextField txtSolution;
 	
 	@FXML
 	private TextField setText;
@@ -51,6 +57,9 @@ public class Controller {
 	
 	@FXML
 	private TextField tutTxtFld;
+	
+	@FXML
+	private TextField txtFldAns;
 
 	@FXML
 	void refresh(ActionEvent event) {
@@ -81,6 +90,11 @@ public class Controller {
 	@FXML
 	void textField(ActionEvent event) {
 
+	}
+	
+	@FXML
+	void findSolution(ActionEvent event) {
+		solution(); 
 	}
 
 	/**
@@ -142,13 +156,25 @@ public class Controller {
 		setText.setText(cardOneValue +" "+ cardTwoValue +" "+ cardThreeValue +" "+ cardFourValue);
 
 	}
+	
+	public void solution() {
+		txtSolution.setText("test");
+	}
 
 	public void verifyCards() {
 		String text = myTextField.getText();
 		String settext = setText.getText();
 		
+		// Stack for cards
 		Stack<Integer> cardNums = new Stack<Integer>();
 		Stack<Integer>tmpCard = new Stack<Integer>(); 
+		// Set up Stack for numbers
+		Stack<Integer> nums = new Stack<Integer>();
+		Stack<Integer>tmpNums = new Stack<Integer>(); 
+
+		// Set up Stack for Operators
+		Stack<Character> ops = new Stack<Character>();
+
 		
 		char[] cardChars = settext.toCharArray();
 		
@@ -161,8 +187,8 @@ public class Controller {
 				while (i < cardChars.length && cardChars[i] >= '0' && cardChars[i] <= '9') {
 					sbuf.append(cardChars[i++]);
 					cardNums.push(Integer.parseInt(sbuf.toString()));
+					tmpCard.push(Integer.parseInt(sbuf.toString()));
 				}
-				tmpCard.addAll(cardNums);
 				System.out.println(cardNums.peek()); 
 				System.out.println(tmpCard.peek()); 
 				}
@@ -182,14 +208,6 @@ public class Controller {
         });
         
 
-		// Set up Stack for numbers
-		Stack<Integer> nums = new Stack<Integer>();
-		Stack<Integer>tmpNums = new Stack<Integer>(); 
-
-
-		// Set up Stack for Operators
-		Stack<Character> ops = new Stack<Character>();
-
 		for (int i = 0; i < chars.length; i++) {
 
 			// Do the stack for numbers, if its 0 - 9, means its a number
@@ -200,10 +218,10 @@ public class Controller {
 				while (i < chars.length && chars[i] >= '0' && chars[i] <= '9') {
 					sbuf.append(chars[i++]);
 					nums.push(Integer.parseInt(sbuf.toString()));
+					tmpNums.push(Integer.parseInt(sbuf.toString()));
+
 				}
-				tmpNums.addAll(nums);
 				System.out.println(nums.peek());
-				System.out.println(tmpNums.peek());
 			}
 			
 			// open brace, pushed to operator stack
@@ -234,16 +252,43 @@ public class Controller {
 			
 		}
 	   
-		if(tmpNums.peek() == tmpCard.peek()) {
-			System.out.println("TEST GOOD"); 
-			System.out.println("TMP NUMS" + tmpNums.peek()); 
-			System.out.println("TMP cards" + tmpCard.peek()); 
+		//  pop out the tmp values, then check to see if they equal eachother for validation.
 
-		}else {
-			System.out.println("NOPE");
-			System.out.println("TMP NUMS" + tmpNums.peek()); 
-			System.out.println("TMP cards" + tmpCard.peek()); 
+		
+int cardP1 = tmpCard.pop(); 
+int cardP2 = tmpCard.pop(); 
+int cardP3 = tmpCard.pop(); 
+int cardP4 = tmpCard.pop(); 
+
+
+int numP1 = tmpNums.pop(); 
+int numP2 = tmpNums.pop(); 
+int numP3 = tmpNums.pop(); 
+int numP4 = tmpNums.pop(); 
+int whileLoopGood = 0; 
+boolean resultWhile;
+resultWhile = false;
+while(!resultWhile) { 
+	while(numP1 == cardP1 || numP1 == cardP2 || numP1 == cardP3 || numP1 == cardP4) {
+		while(numP2 == cardP1 || numP2 == cardP2 || numP2 == cardP3 || numP2 == cardP4) {
+			while(numP3 == cardP1 || numP3 == cardP2 || numP3 == cardP3 || numP3 == cardP4) {
+				while(numP4 == cardP1 || numP4 == cardP2 || numP4 == cardP3 || numP4 == cardP4) {
+					whileLoopGood = 1;
+					resultWhile = true; 
+					break;
+				}
+				break;
+			}
+			break; 
 		}
+		break;
+	}
+	break;
+}
+
+//if the while loop does reach the final desitintion then user did not type in correctly. 
+
+
 
 		// Entire expression has been parsed at this point, apply remaining
 		// ops to remaining nums
@@ -254,9 +299,15 @@ public class Controller {
 		// Check to see if the number is equal to 24
 		int result = nums.pop();
 		if (result != 24) {
-			System.out.println("Wrong : " + result + " is NOT equal to 24");
+			txtFldAns.setText("Wrong : " + result + " is NOT equal to 24");
+			if(whileLoopGood == 0) {
+				txtFldAns.setText("You must use all 4 cards Once and only once");
+				}
 		} else
-			System.out.println("Correct : " + result + " is equal to 24");
+			txtFldAns.setText("Correct : " + result + " is equal to 24");
+		if(whileLoopGood == 0) {
+			txtFldAns.setText("You must use all 4 cards Once and only once");
+			}
 	}
 
 	/*

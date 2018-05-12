@@ -49,15 +49,8 @@
          <top>
             <HBox prefHeight="73.0" prefWidth="801.0" BorderPane.alignment="CENTER">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #1a6600#1a6600;" text="Find the Solution:" translateX="20.0" translateY="5.0" wrappingWidth="218.4938507080078">
-                     <font>
-                        <Font size="28.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="50.0" top="15.0" />
-                     </HBox.margin>
-                  </Text>
-                  <TextField prefHeight="60.0" prefWidth="233.0" style="-fx-background-color: #1a6600#1a6600; -fx-border-color: black; -fx-font: white;" translateX="30.0" translateY="10.0">
+                  <Button fx:id="BtnSolution" mnemonicParsing="false" onAction="#findSolution" prefHeight="71.0" prefWidth="235.0" style="-fx-background-color: #1a6600#1a6600 #1a6600#1a6600; -fx-text-fill: white;" text="Find the solution" />
+                  <TextField fx:id="txtSolution" prefHeight="60.0" prefWidth="233.0" style="-fx-background-color: #1a6600#1a6600; -fx-border-color: black; -fx-font: white;" translateX="30.0" translateY="10.0">
                      <HBox.margin>
                         <Insets top="5.0" />
                      </HBox.margin>
@@ -118,5 +111,6 @@
             <TextField layoutX="12.0" layoutY="275.0" prefHeight="27.0" prefWidth="785.0" text="See if whether the result of the expression is correct." />
          </children>
       </Pane>
+      <TextField fx:id="txtFldAns" layoutY="572.0" prefHeight="93.0" prefWidth="820.0" />
    </children>
 </AnchorPane>
