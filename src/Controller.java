@@ -70,11 +70,6 @@ public class Controller {
 
 	}
 
-	/**
-	 * @param none
-	 * @return void
-	 * 
-	 */
 	@FXML
 	void startGame(ActionEvent event) {
 		cards();
@@ -97,13 +92,12 @@ public class Controller {
 		solution(); 
 	}
 
-	/**
-	 * @param none
-	 * @return void
-	 * 
-	 */
 
+	/**
+	 * This method, selects 4 random cards and displays on the screen
+	 */
 	public void cards() {
+		
 
 		boolean[] randomCards = new boolean[52];
 
@@ -154,14 +148,31 @@ public class Controller {
 		String cardFourValue = Integer.toString(card4);
 		System.out.println(cardOneValue + " - " + cardTwoValue + " - " + cardThreeValue + " - " + cardFourValue);
 		setText.setText(cardOneValue +" "+ cardTwoValue +" "+ cardThreeValue +" "+ cardFourValue);
-
+		
+		int solution = 0; 
+		if(solution!=24) {
+		for(int limit = 0; limit < 25; limit++) {
+		
+				System.out.println("No");
+			}
+		}
+		System.out.println(solution);
+		
 	}
 	
+	/**
+	 * Find the solution to the probelm, when button is clicked. 
+	 */
 	public void solution() {
-		txtSolution.setText("test");
+		
 	}
 
+	/**
+	 * This method takes the cards that the user entered and stores it into its own stack. Then compares it to the cards
+	 * that are being displayed. Verifies that everything the user is correct, and if they got the answer
+	 */
 	public void verifyCards() {
+		
 		String text = myTextField.getText();
 		String settext = setText.getText();
 		
@@ -236,13 +247,7 @@ public class Controller {
 				ops.pop();
 			}
 
-			/*
-			 * ------------------------------------------------------------------------ The
-			 * char is a operator +, -, /, * , so push it to operator stack While top of
-			 * 'ops' has same or greater precedence to current token, which is an operator.
-			 * Apply operator on top of 'ops' to top two elements in nums stack
-			 * ------------------------------------------------------------------------
-			 */
+		
 			else if (chars[i] == '+' || chars[i] == '-' || chars[i] == '*' || chars[i] == '/') {
 
 				while (!ops.empty() && precedenceOrder(chars[i], ops.peek()))
@@ -310,13 +315,15 @@ while(!resultWhile) {
 			}
 	}
 
-	/*
-	 * ------------------------------------------------------------------------
-	 * Returns true if 'op2' has higher or same precedence as 'op1', otherwise
-	 * returns false.
-	 * ------------------------------------------------------------------------
+	/**
+	 * This method takes in the operators being used and comapres them to eachother, in order to 
+	 * find the order in which they should be used. It takes from the stack that the operators are stored in
+	 * @param op1
+	 * @param op2
+	 * @return boolean
 	 */
 	public static boolean precedenceOrder(char op1, char op2) {
+		
 		if (op2 == '(' || op2 == ')')
 			return false;
 		// if the second operator is a + or - than it does not get higher precendence
@@ -327,14 +334,16 @@ while(!resultWhile) {
 			return true;
 	}
 
-	/*
-	 * ------------------------------------------------------------------------ A
-	 * utility method to apply an operator 'op' on operands 'a' and 'b'. Return the
-	 * result.
-	 * ------------------------------------------------------------------------
+	
+	/**
+	 * Returns the result of the math. Each operator is applied to what math should be used for it. Does not allow to divide by 0
+	 * @param op
+	 * @param x
+	 * @param y
+	 * @return int
 	 */
-
 	public static int operatorCases(char op, int x, int y) {
+		
 		switch (op) {
 		case '+':
 			return y + x;

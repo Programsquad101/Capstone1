@@ -1,0 +1,9 @@
+How to use the project, and what is required
+
+
+To do the math, must have spaces between operators and numbers. For example: 1*2 will not work but 
+1 * 2 or 1 *2 will work. 
+
+If 4 cards is not used then nothing will pop up. Must enter 4 or more cards to display on the GUI
+
+No solution for numbers. 
